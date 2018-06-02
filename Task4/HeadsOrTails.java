@@ -8,9 +8,10 @@ public class HeadsOrTails {
         String result;
         int heads = 0;
         int tails = 0;
+        boolean throwing;
         Random random = new Random(System.currentTimeMillis());
         for (int i = 0; i < throwsNumber; i++) {
-            boolean throwing = random.nextBoolean(); //if true - its a head, false - its a tail
+            throwing = random.nextBoolean(); //if true - its a head, false - its a tail
             if (throwing) {
                 heads++;
             } else {
