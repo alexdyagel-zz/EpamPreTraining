@@ -8,10 +8,6 @@ public class PerfectNumber {
                 dividersSum += divider;
             }
         }
-        if (dividersSum == number) {
-            return true;
-        } else {
-            return false;
-        }
+      return dividersSum == number;
     }
 }
