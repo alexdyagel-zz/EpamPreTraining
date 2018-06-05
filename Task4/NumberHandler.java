@@ -41,7 +41,7 @@ public class NumberHandler {
         }
         // check dividers from 2 to square root of number
         for (int divider = 2; divider <= Math.sqrt(number); divider++) {
-            //if number has a divider in this interval, it is a prime number
+            //if number has a divider in this interval, it is not a prime number
             if (number % divider == 0) {
                 result = false;
                 break;
