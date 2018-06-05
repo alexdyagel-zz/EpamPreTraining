@@ -2,6 +2,8 @@ package by.dyagel;
 
 public class NumberHandler {
 
+    private static final int MAX_DIGIT = 9;
+
     public static int findMaxDigitOfNumber(int number) {
         number = Math.abs(number); // getting rid of negative number
         int maxDigit = 0;
@@ -25,31 +27,27 @@ public class NumberHandler {
             reverseNumber += (number % 10);
             number /= 10;
         }
-        if (reverseNumber == numberCopy) {  /*check if reverse is equal to initial value*/
-            return true;
-        } else {
-            return false;
-        }
+        return reverseNumber == numberCopy; //check if reverse is equal to initial value
     }
 
     public static boolean isPrime(int number) {
+        boolean result = true;
         if (number == 1) {
-            return false;
-        }
-        if (number == 2) {
-            return true;
+            result = false;
         }
         // even numbers except 2 are not prime
-        if (number % 2 == 0) {
-            return false;
+        if (number % 2 == 0 && number != 2) {
+            result = false;
         }
         // check dividers from 2 to square root of number
         for (int divider = 2; divider <= Math.sqrt(number); divider++) {
+            //if number has a divider in this interval, it is a prime number
             if (number % divider == 0) {
-                return false;
+                result = false;
+                break;
             }
         }
-        return true;
+        return result;
     }
 
     public static String findPrimeDividers(int number) {
@@ -60,7 +58,7 @@ public class NumberHandler {
                 result += (divider + " ");
             }
         }
-        return (result == "") ? "no prime dividers" : result;
+        return result.equals("") ? "no prime dividers" : result;
     }
 
     /**
@@ -88,8 +86,9 @@ public class NumberHandler {
 
     public static int findAmountOfDifferentDigits(int number) {
         int count = 0;
+
         int numberKeeper;
-        for (int digit = 0; digit <= 9; digit++) {
+        for (int digit = 0; digit <= MAX_DIGIT; digit++) {
             numberKeeper = number;
             while (numberKeeper > 0) {
                 if (numberKeeper % 10 == digit) {
