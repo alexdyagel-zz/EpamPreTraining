@@ -34,17 +34,16 @@ public class NumberHandler {
         boolean result = true;
         if (number == 1) {
             result = false;
-        }
-        // even numbers except 2 are not prime
-        if (number % 2 == 0 && number != 2) {
+        } else if (number % 2 == 0 && number != 2) {   // even numbers except 2 are not prime
             result = false;
-        }
-        // check dividers from 2 to square root of number
-        for (int divider = 2; divider <= Math.sqrt(number); divider++) {
-            //if number has a divider in this interval, it is not a prime number
-            if (number % divider == 0) {
-                result = false;
-                break;
+        } else {
+            // check dividers from 2 to square root of number
+            for (int divider = 2; divider <= Math.sqrt(number); divider++) {
+                //if number has a divider in this interval, it is not a prime number
+                if (number % divider == 0) {
+                    result = false;
+                    break;
+                }
             }
         }
         return result;
