@@ -5,6 +5,8 @@ package by.dyagel;
  */
 public class ArrayHandler {
 
+    private static final int ERROR_VALUE = -1;
+
     /**
      * This method finds out max value of array
      *
@@ -45,7 +47,7 @@ public class ArrayHandler {
      * @return geometric mean of array of numbers
      */
     public static double findGeometricMean(double[] array) {
-        double res = -1;
+        double res = ERROR_VALUE;
         if (!containsNegativeValue(array)) {
             res = Math.pow(getMultiplicationOfArray(array), 1.0 / array.length);
         }
@@ -167,7 +169,7 @@ public class ArrayHandler {
                 return i;
             }
         }
-        return -1;
+        return ERROR_VALUE;
     }
 
     /**
@@ -183,7 +185,7 @@ public class ArrayHandler {
                 return i;
             }
         }
-        return -1;
+        return ERROR_VALUE;
     }
 
     /**
