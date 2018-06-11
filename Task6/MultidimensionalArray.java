@@ -165,33 +165,24 @@ public class MultidimensionalArray {
 
     /**
      * Method transpose matrix
-     * Additional storage is used here because method can transpose either square and not square matrix
+     * matrix should be square
      */
-    public static double[][] transpose(double[][] array) {
-        if (!isEmpty(array)) {
-            if (isSquare(array)) {
-                for (int i = 1; i < array.length; i++) {
-                    for (int j = 0; j < i; j++) {
-                        array[i][j] = array[i][j] - array[j][i];
-                        array[j][i] = array[i][j] + array[j][i];
-                        array[i][j] = array[j][i] - array[i][j];
-                    }
+    public static boolean transpose(double[][] array) {
+        if (isSquare(array)) {
+            for (int i = 1; i < array.length; i++) {
+                for (int j = 0; j < i; j++) {
+                    array[i][j] = array[i][j] - array[j][i];
+                    array[j][i] = array[i][j] + array[j][i];
+                    array[i][j] = array[j][i] - array[i][j];
                 }
-            } else {
-                double[][] arrayTemp = new double[array[0].length][array.length];
-                for (int i = 0; i < array.length; i++) {
-                    for (int j = 0; j < array[0].length; j++) {
-                        arrayTemp[j][i] = array[i][j];
-                    }
-                }
-                return arrayTemp;
             }
+            return true;
         }
-        return array;
+        return false;
     }
 
     /**
-     * This method checks whether array is square
+     * This method checks whether matrix is square
      */
     private static boolean isSquare(double[][] array) {
         return !isEmpty(array) && (array.length == array[0].length);
