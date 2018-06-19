@@ -14,8 +14,9 @@ public class TesterTask07 {
 
     public static void main(String[] args) {
         int number = 5;
+        int maxNumberOfGadgets = 300;
         String name = "iStore";
-        GadgetsStore store = AppleStoreCreator.createStore(number, name);
+        GadgetsStore store = AppleStoreCreator.createStore(number, name,maxNumberOfGadgets );
         ConsoleView.print(store);
         ConsoleView.print("Assortment of iStore empty  ==> " + StoreAssortmentManager.isAssortmentEmpty(store));
 
@@ -51,6 +52,7 @@ public class TesterTask07 {
         System.out.println("\nAssortment after removing all gadgets from store :");
         StoreAssortmentManager.removeAllGadgets(store);
         ConsoleView.print(store);
+        //Gadget g = new Gadget();
     }
 
 

@@ -47,7 +47,7 @@ public class StoreAccountancy {
 
     public static Gadget[] filterGadgetsByPrice(GadgetsStore store, double min, double max) {
         Gadget[] assortment = store.getGadgets();
-        Gadget[] filteredAssortment = new Gadget[GadgetsStore.getMaxNumberOfGadgets()];
+        Gadget[] filteredAssortment = new Gadget[store.getMaxNumberOfGadgets()];
         int count = 0;
         for (int i = 0; i < store.getAmountOfGadgets(); i++) {
             if (assortment[i].getPrice() >= min && assortment[i].getPrice() <= max) {

@@ -9,7 +9,7 @@ import by.epam.preTraining.alexdyagel.tasks.task07.model.entity.Gadget;
 public class StoreAssortmentManager {
 
     public static boolean add(GadgetsStore store, Gadget gadget) {
-        if (store.getAmountOfGadgets() < GadgetsStore.getMaxNumberOfGadgets()) {
+        if (store.getAmountOfGadgets() < store.getMaxNumberOfGadgets()) {
             Gadget[] assortment = store.getGadgets();
             assortment[store.getAmountOfGadgets()] = gadget;
             store.setAmountOfGadgets(store.getAmountOfGadgets() + 1);
@@ -19,7 +19,7 @@ public class StoreAssortmentManager {
     }
 
     public static boolean add(GadgetsStore store, Gadget[] gadgets) {
-        if (store.getAmountOfGadgets() + gadgets.length <= GadgetsStore.getMaxNumberOfGadgets()) {
+        if (store.getAmountOfGadgets() + gadgets.length <= store.getMaxNumberOfGadgets()) {
             Gadget[] assortment = store.getGadgets();
             for (int i = store.getAmountOfGadgets(), j = 0; i < store.getAmountOfGadgets() + gadgets.length; i++, j++) {
                 assortment[i] = gadgets[j];

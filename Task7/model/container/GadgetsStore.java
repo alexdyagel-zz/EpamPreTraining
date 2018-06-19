@@ -6,27 +6,42 @@ import java.util.Arrays;
 
 
 /**
- * This class is a container for gadgets
+ * This class is a static container for gadgets it should be limited with max number of gadgets
  */
 public class GadgetsStore {
     private String name;
     private Gadget[] gadgets;
     private int amountOfGadgets;
-    private static final int MAX_NUMBER_OF_GADGETS = 1000;
+    private int maxNumberOfGadgets;
+
+    private static final int DEFAULT_MAX_NUMBER_OF_GADGETS = 1000;
 
     public GadgetsStore() {
         amountOfGadgets = 0;
-        gadgets = new Gadget[MAX_NUMBER_OF_GADGETS];
+        maxNumberOfGadgets = DEFAULT_MAX_NUMBER_OF_GADGETS;
+        gadgets = new Gadget[maxNumberOfGadgets];
     }
 
-    public GadgetsStore(String name, Gadget[] gadgets, int amountOfGadgets) {
+    public GadgetsStore(String name, Gadget[] gadgets, int maxNumberOfGadgets) {
         this.name = name;
         this.gadgets = gadgets;
-        this.amountOfGadgets = amountOfGadgets;
+        this.amountOfGadgets = gadgets.length;
+        this.maxNumberOfGadgets = maxNumberOfGadgets;
     }
 
-    public static int getMaxNumberOfGadgets() {
-        return MAX_NUMBER_OF_GADGETS;
+    public GadgetsStore(GadgetsStore store) {
+        name = store.name;
+        gadgets = store.gadgets;
+        amountOfGadgets = store.amountOfGadgets;
+        maxNumberOfGadgets = store.maxNumberOfGadgets;
+    }
+
+    public int getMaxNumberOfGadgets() {
+        return maxNumberOfGadgets;
+    }
+
+    public void setMaxNumberOfGadgets(int maxNumberOfGadgets) {
+        this.maxNumberOfGadgets = maxNumberOfGadgets;
     }
 
     public String getName() {
@@ -62,7 +77,10 @@ public class GadgetsStore {
             return false;
         }
         GadgetsStore that = (GadgetsStore) object;
-        return Arrays.equals(getGadgets(), that.getGadgets());
+        return Arrays.equals(getGadgets(), that.getGadgets())
+                && getName().equals(that.getName())
+                && getAmountOfGadgets() == that.getAmountOfGadgets()
+                && getMaxNumberOfGadgets() == that.getMaxNumberOfGadgets();
     }
 
     @Override
@@ -73,17 +91,17 @@ public class GadgetsStore {
         result = primeNumber2 * result + name.hashCode();
         result = primeNumber2 * result + amountOfGadgets;
         result = primeNumber2 * result + Arrays.hashCode(getGadgets());
-        result = primeNumber2 * result + MAX_NUMBER_OF_GADGETS;
+        result = primeNumber2 * result + maxNumberOfGadgets;
         return result;
     }
 
     @Override
     public String toString() {
-        String res = "Store name : " + name + "\n Amount of gadgets: " + amountOfGadgets + "\n";
+        StringBuilder res = new StringBuilder("Store name : " + name + "\n Amount of gadgets: " + amountOfGadgets + "\n");
         for (int i = 0; i < getAmountOfGadgets(); i++) {
-            res += gadgets[i].toString();
+            res.append(gadgets[i].toString());
         }
-        return res;
+        return res.toString();
     }
 
 

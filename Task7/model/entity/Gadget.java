@@ -1,22 +1,22 @@
 package by.epam.preTraining.alexdyagel.tasks.task07.model.entity;
 
-public abstract class Gadget {
+public class Gadget {
     private String brand;
     private String model;
     private double price;
     private double screenSize;
 
-    public Gadget() {
+    protected Gadget() {
     }
 
-    public Gadget(String brand, String model, double price, double screenSize) {
+    protected Gadget(String brand, String model, double price, double screenSize) {
         this.brand = brand;
         this.model = model;
         this.price = price;
         this.screenSize = screenSize;
     }
 
-    public Gadget(Gadget gadget) {
+    protected Gadget(Gadget gadget) {
         brand = gadget.brand;
         model = gadget.model;
         price = gadget.price;

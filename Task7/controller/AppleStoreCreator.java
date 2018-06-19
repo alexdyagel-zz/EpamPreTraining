@@ -37,13 +37,14 @@ public class AppleStoreCreator {
     private static final boolean[] STYLUS = {true, true, false};
 
 
-    public static GadgetsStore createStore(int numberOfGadgets, String storeName) {
-        if (numberOfGadgets > GadgetsStore.getMaxNumberOfGadgets()) {
+    public static GadgetsStore createStore(int numberOfGadgets, String storeName, int maxNumberOfGadgets) {
+        if (numberOfGadgets > maxNumberOfGadgets) {
             return null;
         }
         Random random = new Random(System.currentTimeMillis());
         GadgetsStore store = new GadgetsStore();
         store.setName(storeName);
+        store.setMaxNumberOfGadgets(maxNumberOfGadgets);
         int gadgetNumber;
         for (int i = 0; i < numberOfGadgets; i++) {
             gadgetNumber = random.nextInt(NUMBER_OF_GADGETS);
