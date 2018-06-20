@@ -1,7 +1,7 @@
 package by.epam.preTraining.alexdyagel.tasks.task07.controller;
 
-import by.epam.preTraining.alexdyagel.tasks.task07.logic.StoreAssortmentManager;
-import by.epam.preTraining.alexdyagel.tasks.task07.model.container.GadgetsStore;
+import by.epam.preTraining.alexdyagel.tasks.task07.logic.StoreManager;
+import by.epam.preTraining.alexdyagel.tasks.task07.model.container.LimitedGadgetsStore;
 import by.epam.preTraining.alexdyagel.tasks.task07.model.entity.*;
 
 import java.util.Random;
@@ -20,7 +20,6 @@ public class AppleStoreCreator {
     private static final double[] LAPTOP_SIZES = {13, 15, 17};
     private static final boolean TOUCHSCREEN = false;
 
-
     private static final String[] PHONES = {"iPhone X", "iPhone 8", "iPhone 7"};
     private static final double[] PHONE_PRICES = {1150, 800, 700};
     private static final double[] PHONE_SIZES = {5.8, 4.7, 4.7};
@@ -37,12 +36,12 @@ public class AppleStoreCreator {
     private static final boolean[] STYLUS = {true, true, false};
 
 
-    public static GadgetsStore createStore(int numberOfGadgets, String storeName, int maxNumberOfGadgets) {
+    public static LimitedGadgetsStore createStore(int numberOfGadgets, String storeName, int maxNumberOfGadgets) {
         if (numberOfGadgets > maxNumberOfGadgets) {
             return null;
         }
         Random random = new Random(System.currentTimeMillis());
-        GadgetsStore store = new GadgetsStore();
+        LimitedGadgetsStore store = new LimitedGadgetsStore();
         store.setName(storeName);
         store.setMaxNumberOfGadgets(maxNumberOfGadgets);
         int gadgetNumber;
@@ -50,16 +49,16 @@ public class AppleStoreCreator {
             gadgetNumber = random.nextInt(NUMBER_OF_GADGETS);
             switch (gadgetNumber) {
                 case 0:
-                    StoreAssortmentManager.add(store, createLaptop());
+                    StoreManager.add(store, createLaptop());
                     break;
                 case 1:
-                    StoreAssortmentManager.add(store, createWatch());
+                    StoreManager.add(store, createWatch());
                     break;
                 case 2:
-                    StoreAssortmentManager.add(store, createTablet());
+                    StoreManager.add(store, createTablet());
                     break;
                 case 3:
-                    StoreAssortmentManager.add(store, createPhone());
+                    StoreManager.add(store, createPhone());
                     break;
             }
         }
