@@ -55,11 +55,9 @@ public class StoreSorter {
                     maxInd = j;
                 }
             }
-            if (i != maxInd) {
-                temp = assortment[maxInd];
-                assortment[maxInd] = assortment[i];
-                assortment[i] = temp;
-            }
+            temp = assortment[maxInd];
+            assortment[maxInd] = assortment[i];
+            assortment[i] = temp;
         }
     }
 }
