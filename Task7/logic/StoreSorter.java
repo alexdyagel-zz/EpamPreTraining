@@ -60,4 +60,42 @@ public class StoreSorter {
             assortment[i] = temp;
         }
     }
+
+    public static void mergeSort(UnlimitedGadgetsStore store) {
+        Gadget[] assortment = store.getGadgets();
+        if (assortment.length == 1) {
+            return;
+        }
+        int mid = assortment.length / 2;
+        Gadget[] tempAssort1 = new Gadget[mid];
+        Gadget[] tempAssort2 = new Gadget[assortment.length - mid];
+
+        System.arraycopy(assortment, 0, tempAssort1, 0, mid);
+        System.arraycopy(assortment, mid, tempAssort2, 0, assortment.length - mid);
+
+        UnlimitedGadgetsStore tempStore1 = new UnlimitedGadgetsStore("Temp Store", tempAssort1);
+        UnlimitedGadgetsStore tempStore2 = new UnlimitedGadgetsStore("Temp Store", tempAssort2);
+
+        mergeSort(tempStore1);
+        mergeSort(tempStore2);
+
+        merge(assortment, tempAssort1, tempAssort2);
+    }
+
+    private static void merge(Gadget[] assortment, Gadget[] tempAssort1, Gadget[] tempAssort2) {
+        int j = 0, k = 0, t = 0;
+        while (j < tempAssort1.length && k < tempAssort2.length) {
+            if (tempAssort1[j].getPrice() < tempAssort2[k].getPrice()) {
+                assortment[t++] = tempAssort1[j++];
+            } else {
+                assortment[t++] = tempAssort2[k++];
+            }
+        }
+        while (j < tempAssort1.length) {
+            assortment[t++] = tempAssort1[j++];
+        }
+        while (k < tempAssort2.length) {
+            assortment[t++] = tempAssort2[k++];
+        }
+    }
 }

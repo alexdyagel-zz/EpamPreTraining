@@ -22,8 +22,10 @@ public class StoreManager {
     public static boolean add(UnlimitedGadgetsStore store, Gadget gadget) {
         Gadget[] assortment = store.getGadgets();
         Gadget[] updatedAssortment = new Gadget[store.getAmountOfGadgets() + 1];
-        System.arraycopy(assortment, 0, updatedAssortment, 0, store.getAmountOfGadgets());
-        assortment[store.getAmountOfGadgets()] = gadget;
+        if (assortment != null) {
+            System.arraycopy(assortment, 0, updatedAssortment, 0, store.getAmountOfGadgets());
+        }
+        updatedAssortment[store.getAmountOfGadgets()] = gadget;
         store.setGadgets(updatedAssortment);
         store.setAmountOfGadgets(updatedAssortment.length);
         return true;

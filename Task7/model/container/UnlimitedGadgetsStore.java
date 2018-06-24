@@ -10,6 +10,7 @@ public class UnlimitedGadgetsStore {
     private int amountOfGadgets;
 
     public UnlimitedGadgetsStore() {
+        //amountOfGadgets = 0;
     }
 
     public UnlimitedGadgetsStore(String name, Gadget[] gadgets) {
